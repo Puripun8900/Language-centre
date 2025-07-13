@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suomen kielen oppiminen</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo">S</div>
+                <h1>Suomen kielen oppiminen</h1>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" onclick="showPage('etusivu')" class="nav-link">Etusivu</a>
+                <a href="#" onclick="showPage('oppimispolku')" class="nav-link">Opi suomea</a>
+                <a href="#" onclick="showPage('palautetta')" class="nav-link">Palautetta</a>
+                <div class="progress-indicator">
+                    <span id="overall-score">Score: 0%</span> | 
+                    <span id="total-time">Time: 0:00</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <section id="etusivu" class="page active">
+        <div class="hero-section">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1><span class="highlight">Tervetuloa</span><br>Suomen kielen oppiminen.</h1>
+                    <p class="subtitle">Kansainvälisille opiskelijoille</p>
+                    <p class="description">Tervetuloa suomen kielen oppimisalustalle! Tämä alusta on suunniteltu auttamaan kansainvälisiä opiskelijoita oppimaan suomen kielen sanastoa ja fraaseja, joita käytetään yleisesti työpaikkaympäristössä.</p>
+                    <button onclick="showPage('oppimispolku')" class="cta-button">Aloita oppiminen →</button>
+                </div>
+                <div class="hero-image">
+                    <img src="https://drive.google.com/thumbnail?id=1RkHAO6srV0wLSwjscdr_28vguZ7Bf36g&sz=s800" alt="Kahvihuone">
+                    <div class="floating-icon">📖</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Path -->
+    <section id="oppimispolku" class="page">
+        <div class="learning-path">
+            <div class="sidebar">
+                <h2>Oppimispolku</h2>
+                <p>Suorita nämä neljä interaktiivista moduulia hallitaksesi suomen kielen sanastoa ja keskustelutaitoja työpaikka-asetuksissa.</p>
+            </div>
+            <div class="modules-grid">
+                <div class="module-card" data-module="moduuli1">
+                    <div class="module-header">
+                        <span class="module-badge blue">MODUULI 1</span>
+                        <div class="module-status">
+                            <span class="time">⏱ 15 minuuttia</span>
+                            <span class="status-indicator" id="status-moduuli1">→ Nykyinen</span>
+                        </div>
+                    </div>
+                    <h3>Perussanasto</h3>
+                    <p>Opi oleellista suomen sanastoa työpaikan taukohuoneeseen. Hallitse äänteäminen äänioppaiden avulla ja harjoittele sana-kuva-yhdistämisharjoituksia.</p>
+                    <button onclick="startModule('moduuli1')" class="module-button" id="btn-moduuli1">Aloita oppiminen →</button>
+                </div>
+
+                <div class="module-card" data-module="moduuli2">
+                    <div class="module-header">
+                        <span class="module-badge green">MODUULI 2</span>
+                        <div class="module-status">
+                            <span class="time">⏱ 20 minuuttia</span>
+                            <span class="status-indicator" id="status-moduuli2">🔒 Lukittu</span>
+                        </div>
+                    </div>
+                    <h3>Kuullun ymmärtäminen</h3>
+                    <p>Harjoittele puhujan suomen ymmärtämistä kahviympäristössä. Klikkaa kuvaa ääniohjeiden perusteella parantaaksesi kuunteluharjoituksia.</p>
+                    <button onclick="startModule('moduuli2')" class="module-button" id="btn-moduuli2" disabled>Aloita oppiminen →</button>
+                </div>
+
+                <div class="module-card" data-module="moduuli3">
+                    <div class="module-header">
+                        <span class="module-badge purple">MODUULI 3</span>
+                        <div class="module-status">
+                            <span class="time">⏱ 25 minuuttia</span>
+                            <span class="status-indicator" id="status-moduuli3">🔒 Lukittu</span>
+                        </div>
+                    </div>
+                    <h3>Sana- ja lauseharjoitukset</h3>
+                    <p>Harjoittele suomalaisten lauseiden muodostamista ja verbien oikeaa käyttöä. Suorita kolme erilaista harjoitusta hallitaksesi lauseenmuodostuksen ja verbien käytön.</p>
+                    <button onclick="startModule('moduuli3')" class="module-button" id="btn-moduuli3" disabled>Aloita oppiminen →</button>
+                </div>
+
+                <div class="module-card" data-module="moduuli4">
+                    <div class="module-header">
+                        <span class="module-badge orange">MODUULI 4</span>
+                        <div class="module-status">
+                            <span class="time">⏱ 15 minuuttia</span>
+                            <span class="status-indicator" id="status-moduuli4">🔒 Lukittu</span>
+                        </div>
+                    </div>
+                    <h3>Kuullun ymmärtämisen testi</h3>
+                    <p>Testaa suomen ymmärtämistäsi tosielämän tekstipohjaisella testillä. Kuuntele lausuntoja kahvilakuvasta ja määritä, ovatko ne oikeita vai vääriä.</p>
+                    <button onclick="startModule('moduuli4')" class="module-button" id="btn-moduuli4" disabled>Aloita oppiminen →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Module 1 -->
+    <section id="moduuli1" class="page module-page">
+        <div class="module-header-section">
+            <button onclick="showPage('oppimispolku')" class="back-button">← Takaisin</button>
+            <h2>Moduuli <span class="module-number">1.</span> <span class="module-title">Perussanasto</span></h2>
+            <div class="timer" id="timer-moduuli1">Aika: 0:00</div>
+        </div>
+        
+        <div class="vocabulary-section">
+            <p class="instruction">Klikkaa puhekuplaa ja kuuntele sana. Yhdistä sana oikeaan kuvaan.</p>
+            
+            <div class="word-bubbles" id="word-bubbles">
+                <!-- Word bubbles will be generated by JavaScript -->
+            </div>
+            
+            <div class="image-grid" id="image-grid">
+                <!-- Images will be generated by JavaScript -->
+            </div>
+            
+            <div class="progress-section">
+                <div class="progress-text">Yhdistetty: <span id="matched-count">0</span>/9</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Module 2 -->
+    <section id="moduuli2" class="page module-page">
+        <div class="module-header-section">
+            <button onclick="showPage('oppimispolku')" class="back-button">← Takaisin</button>
+            <h2>Moduuli <span class="module-number">2.</span> <span class="module-title">Kuullun ymmärtäminen</span></h2>
+            <div class="timer" id="timer-moduuli2">Aika: 0:00</div>
+        </div>
+        
+        <div class="listening-section">
+            <div class="instruction-box">
+                <p>Tässä on kuva kahvilasta. Kuuntele, mitä sinun työkaverisi sanoo, ja etsi kuvasta tavarat. Klikkaa tai näpäytä tavaraa.</p>
+            </div>
+            
+            <div class="listening-content">
+                <div class="image-container">
+                    <img src="https://drive.google.com/thumbnail?id=1jSuQ52hk1IEW0oHvpqnYQDwdqG9twTva&sz=s800" alt="Kahvila" id="listening-image" class="clickable-image">
+                </div>
+                
+                <div class="question-panel">
+                    <div class="question-box">
+                        <button class="play-button" id="play-question">▶</button>
+                        <p id="question-text">Lataa kysymys...</p>
+                    </div>
+                    
+                    <div class="feedback-box" id="feedback-box" style="display: none;">
+                        <p id="feedback-text"></p>
+                        <button id="next-question" class="next-button">Seuraava kysymys</button>
+                    </div>
+                    
+                    <div class="progress-section">
+                        <div class="progress-text">Edistyminen: <span id="question-progress">1/8</span></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="listening-progress"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Module 3 -->
+    <section id="moduuli3" class="page module-page">
+        <div class="module-header-section">
+            <button onclick="showPage('oppimispolku')" class="back-button">← Takaisin</button>
+            <h2>Moduuli <span class="module-number">3.</span> <span class="module-title">Sanojen ja lauseiden harjoittelu</span></h2>
+            <div class="timer" id="timer-moduuli3">Aika: 0:00</div>
+        </div>
+        
+        <div class="exercise-tabs">
+            <button class="tab-button active" onclick="switchExercise('A')">Harjoitus A</button>
+            <button class="tab-button" onclick="switchExercise('B')">Harjoitus B</button>
+            <button class="tab-button" onclick="switchExercise('C')">Harjoitus C</button>
+        </div>
+        
+        <div class="exercise-content">
+            <!-- Exercise A -->
+            <div id="exercise-A" class="exercise active">
+                <h3>A. Harjoittele sanoja lisää. Yhdistä lauseet oikein.</h3>
+                <p class="instruction">Klikkaa suomalaista lausetta, sitten klikkaa sen jatkoa</p>
+                
+                <div class="matching-grid">
+                    <div class="left-column">
+                        <h4>Suomalaiset lauseet</h4>
+                        <div id="left-sentences-A"></div>
+                    </div>
+                    <div class="right-column">
+                        <h4>Lauseiden jatkot</h4>
+                        <div id="right-sentences-A"></div>
+                    </div>
+                </div>
+                
+                <button onclick="checkAnswers('A')" class="check-button">✓ Tarkista</button>
+            </div>
+            
+            <!-- Exercise B -->
+            <div id="exercise-B" class="exercise">
+                <h3>B. Harjoittele lisää sanoja. Yhdistä lauseet oikein.</h3>
+                <p class="instruction">Klikkaa suomalaista lausetta, sitten klikkaa sen jatkoa</p>
+                
+                <div class="matching-grid">
+                    <div class="left-column">
+                        <h4>Suomalaiset lauseet</h4>
+                        <div id="left-sentences-B"></div>
+                    </div>
+                    <div class="right-column">
+                        <h4>Lauseiden jatkot</h4>
+                        <div id="right-sentences-B"></div>
+                    </div>
+                </div>
+                
+                <button onclick="checkAnswers('B')" class="check-button">✓ Tarkista</button>
+            </div>
+            
+            <!-- Exercise C -->
+            <div id="exercise-C" class="exercise">
+                <h3>C. Täydennä lauseet oikeilla verbeillä.</h3>
+                <p class="instruction">Valitse oikea verbi ja klikkaa tyhjää kohtaa</p>
+                
+                <div class="verb-selection" id="verb-buttons"></div>
+                <div class="sentence-completion" id="sentence-completion"></div>
+                
+                <button onclick="checkVerbAnswers()" class="check-button">✓ Tarkista</button>
+            </div>
+        </div>
+        
+        <div class="exercise-progress">
+            <div class="progress-text">Suoritettu: <span id="completed-exercises">0</span>/3 harjoitusta</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="exercise-progress"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Module 4 -->
+    <section id="moduuli4" class="page module-page">
+        <div class="module-header-section">
+            <button onclick="showPage('oppimispolku')" class="back-button">← Takaisin</button>
+            <h2>Moduuli <span class="module-number">4.</span> <span class="module-title">Kuullun ymmärtämisen testi</span></h2>
+            <div class="timer" id="timer-moduuli4">Aika: 0:00</div>
+        </div>
+        
+        <div class="test-section">
+            <div class="instruction-box">
+                <p>Katso kuvaa, kuuntele ja klikkaa, onko lause oikein vai väärin.</p>
+            </div>
+            
+            <div class="test-content">
+                <div class="image-container">
+                    <img src="https://drive.google.com/thumbnail?id=18QTgdcO7aa1uF8auHozr-jT3-I5_yHBF&sz=s800" alt="Kahvila" class="test-image">
+                </div>
+                
+                <div class="question-panel">
+                    <div class="question-box">
+                        <button class="play-button" id="play-test-question">▶</button>
+                        <p id="test-question-text">Lataa kysymys...</p>
+                    </div>
+                    
+                    <div class="answer-buttons" id="answer-buttons">
+                        <button onclick="answerTrueFalse(true)" class="answer-btn true-btn">oikein</button>
+                        <button onclick="answerTrueFalse(false)" class="answer-btn false-btn">väärin</button>
+                    </div>
+                    
+                    <div class="feedback-box" id="test-feedback-box" style="display: none;">
+                        <p id="test-feedback-text"></p>
+                        <button id="next-test-question" class="next-button">Seuraava kysymys</button>
+                    </div>
+                    
+                    <div class="progress-section">
+                        <div class="progress-text">Edistyminen: <span id="test-progress-text">1/6</span></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="test-progress"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Page -->
+    <section id="palautetta" class="page">
+        <div class="feedback-section">
+            <div class="feedback-header">
+                <div class="feedback-title">
+                    <span class="feedback-icon">👍</span>
+                    <h2>Anna palautetta</h2>
+                </div>
+                <div class="language-toggle">
+                    <button onclick="toggleLanguage('fi')" class="lang-btn active" id="lang-fi">FI</button>
+                    <button onclick="toggleLanguage('en')" class="lang-btn" id="lang-en">EN</button>
+                </div>
+            </div>
+            
+            <div class="results-summary">
+                <h3>Kokonaistulokset</h3>
+                <div class="results-grid">
+                    <div class="result-item">
+                        <div class="result-value" id="final-score">0%</div>
+                        <div class="result-label">Average Score</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-value" id="final-time">0:00</div>
+                        <div class="result-label">Total Time</div>
+                    </div>
+                </div>
+                
+                <div class="module-results" id="module-results">
+                    <!-- Module results will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <div class="feedback-form">
+                <p class="feedback-description">Arvostamme palautettasi oppimaterialeistamme. Kerro meille kokemuksistasi ja mahdollisista parannusehdotuksista.</p>
+                
+                <form onsubmit="submitFeedback(event)">
+                    <div class="form-group">
+                        <label>Miten arvioisit kokemuksesi oppimaterialeistamme? *</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="rating" value="excellent"> Erinomainen</label>
+                            <label><input type="radio" name="rating" value="good"> Hyvä</label>
+                            <label><input type="radio" name="rating" value="average"> Keskinkertainen</label>
+                            <label><input type="radio" name="rating" value="poor"> Huono</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Mitä voisimme parantaa?</label>
+                        <textarea placeholder="Kirjoita ehdotuksesi tähän..." rows="6"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">Lähetä palaute</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
