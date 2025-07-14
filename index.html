@@ -1,65 +1,122 @@
 <!DOCTYPE html>
 <html lang="fi">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Finnish Learning App</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header>
-    <div class="container header-content">
-      <div class="logo" onclick="showPage('etusivu')">
-        <div class="logo-icon">🏠</div>
-        <h1>Työpaikka Break Room</h1>
-      </div>
-      <nav class="header-nav">
-        <a onclick="showPage('etusivu')">Koti</a>
-        <a onclick="showPage('oppimispolku')">Moduulit</a>
-        <a onclick="showPage('palautetta')">Palaute</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Pages -->
-  <main>
-    <section id="etusivu" class="page active">
-      <!-- Welcome Section -->
-      ...
-    </section>
-
-    <section id="oppimispolku" class="page">
-      <!-- Learning Path Page -->
-      ...
-    </section>
-
-    <section id="learning-modules" class="page">
-      <div class="module-wrapper">
-        <aside class="sidebar">
-          <h3>Moduulit</h3>
-          <ul class="module-list">
-            <li class="module-item" onclick="showModule('moduuli1')"> <span class="module-bullet">●</span> Moduuli 1</li>
-            <li class="module-item" onclick="showModule('moduuli2')"> <span class="module-bullet">●</span> Moduuli 2</li>
-            <li class="module-item" onclick="showModule('moduuli3')"> <span class="module-bullet">●</span> Moduuli 3</li>
-            <li class="module-item" onclick="showModule('moduuli4')"> <span class="module-bullet">●</span> Moduuli 4</li>
-          </ul>
-        </aside>
-
-        <div class="module-content">
-          <div id="moduuli1" class="module-section"> ... </div>
-          <div id="moduuli2" class="module-section"> ... </div>
-          <div id="moduuli3" class="module-section"> ... </div>
-          <div id="moduuli4" class="module-section"> ... </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Language Centre – Break Room</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container header-content">
+        <div class="logo" onclick="showPage('etusivu')">
+          <div class="logo-icon">🏠</div>
+          <h1>Työpaikka Break Room</h1>
         </div>
+        <nav class="header-nav">
+          <a onclick="showPage('etusivu')">Koti</a>
+          <a onclick="showPage('oppimispolku')">Moduulit</a>
+          <a onclick="showPage('palautetta')">Palaute</a>
+        </nav>
       </div>
-    </section>
+    </header>
 
-    <section id="palautetta" class="page">
-      ...
-    </section>
-  </main>
+    <main>
+      <!-- Home Page -->
+      <section id="etusivu" class="page active">
+        <!-- You can add your welcome message or hero section here -->
+      </section>
 
-  <script src="script.js"></script>
-</body>
+      <!-- Learning Path Overview -->
+      <section id="oppimispolku" class="page">
+        <div class="learning-path-page">
+          <aside class="learning-path-sidebar">
+            <h2>Oppimispolku</h2>
+            <p>Valitse moduuli aloittaaksesi oppimisen.</p>
+          </aside>
+          <div class="learning-path-content">
+            <!-- List of modules -->
+            <div class="module-card blue">
+              <div>
+                <div class="module-header">
+                  <span class="module-badge">Moduuli 1</span>
+                  <span class="module-time">Kesto: ~5 min</span>
+                </div>
+                <h3>Sanaston harjoittelu</h3>
+                <p>Opettele työpaikan taukotilan perussanastoa visuaalisesti ja ääneen.</p>
+                <button class="module-start-btn" onclick="showModule('moduuli1')">Aloita</button>
+              </div>
+            </div>
+
+            <div class="module-card green">
+              <div>
+                <div class="module-header">
+                  <span class="module-badge">Moduuli 2</span>
+                  <span class="module-time">Kesto: ~7 min</span>
+                </div>
+                <h3>Kuullun ymmärtäminen</h3>
+                <p>Kuuntele ja yhdistä kuvan kohteita annettuihin lauseisiin.</p>
+                <button class="module-start-btn" onclick="showModule('moduuli2')">Aloita</button>
+              </div>
+            </div>
+
+            <div class="module-card purple">
+              <div>
+                <div class="module-header">
+                  <span class="module-badge">Moduuli 3</span>
+                  <span class="module-time">Kesto: ~6 min</span>
+                </div>
+                <h3>Lauseiden yhdistäminen</h3>
+                <p>Yhdistä oikeat lauseparit sekä täydennä verbit lauseissa.</p>
+                <button class="module-start-btn" onclick="showModule('moduuli3')">Aloita</button>
+              </div>
+            </div>
+
+            <div class="module-card orange">
+              <div>
+                <div class="module-header">
+                  <span class="module-badge">Moduuli 4</span>
+                  <span class="module-time">Kesto: ~5 min</span>
+                </div>
+                <h3>Totuus vai tarua?</h3>
+                <p>Harjoittele tosi/epätosi -lauseiden ymmärtämistä visuaalisen sisällön avulla.</p>
+                <button class="module-start-btn" onclick="showModule('moduuli4')">Aloita</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Modules -->
+      <section id="learning-modules" class="page">
+        <div class="module-wrapper">
+          <aside class="sidebar">
+            <h3>Moduulit</h3>
+            <div id="progress-indicator">Moduuli 1 / 4</div>
+            <ul class="module-list">
+              <li class="module-item" onclick="showModule('moduuli1')"><span class="module-bullet">●</span> Moduuli 1</li>
+              <li class="module-item" onclick="showModule('moduuli2')"><span class="module-bullet">●</span> Moduuli 2</li>
+              <li class="module-item" onclick="showModule('moduuli3')"><span class="module-bullet">●</span> Moduuli 3</li>
+              <li class="module-item" onclick="showModule('moduuli4')"><span class="module-bullet">●</span> Moduuli 4</li>
+            </ul>
+          </aside>
+
+          <div class="module-content">
+            <!-- Each module section -->
+            <div id="moduuli1" class="module-section">[ Module 1 content ]</div>
+            <div id="moduuli2" class="module-section">[ Module 2 content ]</div>
+            <div id="moduuli3" class="module-section">[ Module 3 content ]</div>
+            <div id="moduuli4" class="module-section">[ Module 4 content ]</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Feedback Page -->
+      <section id="palautetta" class="page">
+        <!-- Your feedback form can remain unchanged here -->
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
 </html>
-
