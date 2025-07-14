@@ -1,1 +1,65 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finnish Learning App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="container header-content">
+      <div class="logo" onclick="showPage('etusivu')">
+        <div class="logo-icon">🏠</div>
+        <h1>Työpaikka Break Room</h1>
+      </div>
+      <nav class="header-nav">
+        <a onclick="showPage('etusivu')">Koti</a>
+        <a onclick="showPage('oppimispolku')">Moduulit</a>
+        <a onclick="showPage('palautetta')">Palaute</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Pages -->
+  <main>
+    <section id="etusivu" class="page active">
+      <!-- Welcome Section -->
+      ...
+    </section>
+
+    <section id="oppimispolku" class="page">
+      <!-- Learning Path Page -->
+      ...
+    </section>
+
+    <section id="learning-modules" class="page">
+      <div class="module-wrapper">
+        <aside class="sidebar">
+          <h3>Moduulit</h3>
+          <ul class="module-list">
+            <li class="module-item" onclick="showModule('moduuli1')"> <span class="module-bullet">●</span> Moduuli 1</li>
+            <li class="module-item" onclick="showModule('moduuli2')"> <span class="module-bullet">●</span> Moduuli 2</li>
+            <li class="module-item" onclick="showModule('moduuli3')"> <span class="module-bullet">●</span> Moduuli 3</li>
+            <li class="module-item" onclick="showModule('moduuli4')"> <span class="module-bullet">●</span> Moduuli 4</li>
+          </ul>
+        </aside>
+
+        <div class="module-content">
+          <div id="moduuli1" class="module-section"> ... </div>
+          <div id="moduuli2" class="module-section"> ... </div>
+          <div id="moduuli3" class="module-section"> ... </div>
+          <div id="moduuli4" class="module-section"> ... </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="palautetta" class="page">
+      ...
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
 
