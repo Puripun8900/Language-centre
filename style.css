@@ -1,1 +1,36 @@
+/* Updated style.css additions */
+/* Enhancements: Completed indicator, progress text */
+
+.module-item.completed {
+  opacity: 1;
+  font-weight: bold;
+  position: relative;
+}
+
+.check-mark {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: var(--success-green);
+}
+
+#progress-indicator {
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--white);
+  background: var(--secondary-blue);
+  text-align: center;
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+}
+
+/* Optional: Highlight active module with underline or style */
+.module-item.active {
+  border-left: 4px solid var(--accent-yellow);
+  padding-left: 1rem;
+  background: rgba(255,255,255,0.05);
+}
 
